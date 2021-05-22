@@ -10,7 +10,7 @@
       <div class="body">
         <text-input :input="namaInput" style="margin-bottom: 0.5rem" />
         <text-input :input="emailInput" style="margin-bottom: 0.5rem" />
-        <text-input :input="passInput" style="margin-bottom: 0.5rem" />
+        <text-input :input="passInput" style="margin-bottom: 1.5rem" />
         <div v-ripple class="button">Enter</div>
         <div class="sign-up">
           Already sussy?
@@ -33,7 +33,7 @@ export default {
         label: 'Nama',
         type: 'text',
         icon: 'mdi-account',
-        placeholder: 'place ur name here',
+        placeholder: 'ur sussy name goes here',
         model: '',
       },
       emailInput: {
