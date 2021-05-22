@@ -88,7 +88,7 @@ export default {
   flex-direction: row;
   width: 100vw;
   height: 100vh;
-  .nav {
+  > .nav {
     position: relative;
     display: flex;
     justify-content: flex-start;
@@ -176,7 +176,7 @@ export default {
       }
     }
   }
-  .body {
+  > .body {
     position: relative;
     display: flex;
     flex-direction: column;
