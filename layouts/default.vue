@@ -7,14 +7,15 @@
         </div>
       </div>
       <div class="center-section">
-        <div v-ripple class="button">
-          <v-icon class="icon">mdi-home-variant-outline</v-icon>
-        </div>
-        <div v-ripple class="button">
-          <v-icon class="icon">mdi-message-outline</v-icon>
-        </div>
-        <div v-ripple class="button">
-          <v-icon class="icon">mdi-account-box-outline</v-icon>
+        <div
+          v-for="nav in navList"
+          :key="nav.path"
+          v-ripple
+          :class="navSelected === nav.path ? 'active' : ''"
+          class="button"
+          @click="navSelected = nav.path"
+        >
+          <v-icon class="icon">{{ nav.icon }}</v-icon>
         </div>
       </div>
       <div class="bottom-section">
@@ -23,9 +24,43 @@
         </div>
       </div>
     </div>
-    <div class="body"></div>
+    <div class="body">
+      <div class="header">
+        <div class="nav-container">icon nama</div>
+        <div v-ripple class="notification">
+          <v-icon class="icon">mdi-bell-outline</v-icon>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      navList: [
+        {
+          name: 'Home',
+          icon: 'mdi-home-variant-outline',
+          path: '/home',
+        },
+        {
+          name: 'Message',
+          icon: 'mdi-message-outline',
+          path: '/message',
+        },
+        {
+          name: 'Contact',
+          icon: 'mdi-account-box-outline',
+          path: '/contact',
+        },
+      ],
+      navSelected: '',
+    }
+  },
+}
+</script>
 
 <style lang="scss" scoped>
 .layout {
@@ -91,6 +126,12 @@
           font-size: 1rem;
           color: $subtext-color;
         }
+        &.active {
+          background-color: rgba($primary-color, 0.2);
+          .icon {
+            color: $primary-color;
+          }
+        }
       }
     }
     .bottom-section {
@@ -126,6 +167,31 @@
     // ksih box sizing agar tidak overflow
     box-sizing: border-box;
     border-left: 1px solid $border-color;
+    .header {
+      position: relative;
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+      justify-content: space-between;
+      width: 100%;
+      height: 5rem;
+      border-bottom: 1px solid $border-color;
+      .nav-container {
+        position: relative;
+        display: flex;
+        margin: 0 3rem;
+      }
+      .notification {
+        display: flex;
+        position: relative;
+        margin: 0 4rem;
+        .icon {
+          position: relative;
+          font-size: 1rem;
+          color: $subtext-color;
+        }
+      }
+    }
   }
 }
 </style>
