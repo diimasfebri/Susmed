@@ -86,6 +86,7 @@ export default {
   justify-content: flex-start;
   align-items: flex-start;
   flex-direction: row;
+  overflow: hidden;
   width: 100vw;
   height: 100vh;
   > .nav {
@@ -248,6 +249,7 @@ body {
   font-size: 24px;
   color: $font-color;
   background: $background-color;
+  overflow: hidden;
   @media screen and (max-width: 1919px) {
     font-size: 22px;
   }
