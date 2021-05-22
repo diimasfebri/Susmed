@@ -1,20 +1,6 @@
 <template>
   <div class="body">
-    <div class="left-section">
-      <div class="header">
-        <div class="chat-container">
-          <h1>Chat</h1>
-          <div v-ripple class="circ-btn">
-            <v-icon class="icon">mdi-plus</v-icon>
-          </div>
-        </div>
-        <div class="search-bar" placeholder="...">
-          <v-icon class="icon">mdi-magnify</v-icon>
-          <input type="text" class="input" placeholder="..." />
-        </div>
-      </div>
-      <div class="column-chat"></div>
-    </div>
+    <chat-list />
     <div class="center-section"></div>
     <div class="right-section"></div>
   </div>
