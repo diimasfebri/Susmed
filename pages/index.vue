@@ -1,5 +1,16 @@
 <template>
-  <div class="body"></div>
+  <div class="home-page">
+    testteste
+    <div class="right-section"></div>
+    <div class="left-section"></div>
+  </div>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.home-page {
+  position: relative;
+  display: flex;
+  height: calc(100vh - 5rem);
+  width: calc(100vw - 5rem);
+}
+</style>

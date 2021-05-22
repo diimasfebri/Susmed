@@ -37,6 +37,7 @@
           <v-icon class="icon">mdi-bell-outline</v-icon>
         </div>
       </div>
+      <nuxt class="main" />
     </div>
   </div>
 </template>
@@ -178,6 +179,8 @@ export default {
   .body {
     position: relative;
     display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
     width: calc(100% - 5rem);
     height: 100%;
     // ksih box sizing agar tidak overflow
@@ -225,6 +228,12 @@ export default {
           color: $subtext-color;
         }
       }
+    }
+    .main {
+      display: flex;
+      position: relative;
+      width: calc(100vw - 5rem);
+      height: calc(100vh - 5rem);
     }
   }
 }
