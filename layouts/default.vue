@@ -7,6 +7,8 @@
         </div>
       </div>
       <div class="center-section">
+        <!-- looping object navlist, akan memunculkan icon-icon.
+         navSelected untuk membedakan aktif atau ga-->
         <div
           v-for="nav in navList"
           :key="nav.path"
@@ -26,7 +28,11 @@
     </div>
     <div class="body">
       <div class="header">
-        <div class="nav-container">icon nama</div>
+        <div class="nav-container">
+          <!-- pageTitle merupakan properties -->
+          <v-icon class="icon">{{ pageTitle.icon }}</v-icon>
+          <div class="nama">{{ pageTitle.name }}</div>
+        </div>
         <div v-ripple class="notification">
           <v-icon class="icon">mdi-bell-outline</v-icon>
         </div>
@@ -39,11 +45,12 @@
 export default {
   data() {
     return {
+      // array navList isinya nicon dan nama
       navList: [
         {
           name: 'Home',
           icon: 'mdi-home-variant-outline',
-          path: '/home',
+          path: '/',
         },
         {
           name: 'Message',
@@ -56,8 +63,17 @@ export default {
           path: '/contact',
         },
       ],
-      navSelected: '',
+      // navSelected
+      navSelected: '/',
     }
+  },
+
+  // fungsi yang dapat berubah terus
+  computed: {
+    pageTitle() {
+      //  mencari yang navSelected atau yang Aktif
+      return this.navList.find((a) => a.path === this.navSelected)
+    },
   },
 }
 </script>
@@ -179,12 +195,30 @@ export default {
       .nav-container {
         position: relative;
         display: flex;
-        margin: 0 3rem;
+        flex-direction: row;
+        justify-content: center;
+        padding: 0 1rem;
+        box-sizing: border-box;
+        .icon {
+          position: relative;
+          color: $primary-color;
+          font-size: 1rem;
+          padding: 0 1rem;
+        }
+        .nama {
+          color: $font-color;
+        }
       }
       .notification {
-        display: flex;
+        cursor: pointer;
         position: relative;
-        margin: 0 4rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 0.5rem;
+        width: 3rem;
+        height: 3rem;
+        margin: 0 2rem;
         .icon {
           position: relative;
           font-size: 1rem;
