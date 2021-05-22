@@ -239,5 +239,37 @@ body {
   font-size: 24px;
   color: $font-color;
   background: $background-color;
+  @media screen and (max-width: 1919px) {
+    font-size: 22px;
+  }
+  @media screen and (max-width: 1599px) {
+    font-size: 21px;
+  }
+  @media screen and (max-width: 1479px) {
+    font-size: 20px;
+  }
+  @media screen and (max-width: 1379px) {
+    font-size: 19px;
+  }
+}
+h1 {
+  font-size: 0.9rem;
+}
+h2 {
+  font-size: 0.75rem;
+}
+h3 {
+  font-size: 0.65rem;
+}
+h4 {
+  font-size: 0.6rem;
+}
+h5 {
+  font-size: 0.55rem;
+}
+p {
+  font-size: 0.55rem;
+  padding: 0 !important;
+  margin: 0 !important;
 }
 </style>

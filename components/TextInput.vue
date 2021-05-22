@@ -8,7 +8,7 @@
     <h4 v-else class="label subtext">{{ input.label }}</h4>
     <div class="input-container">
       <input
-        v-model="input.model"
+        v-model="model"
         :type="input.type"
         class="input"
         :class="input.readonly ? 'invincible' : ''"
@@ -47,17 +47,17 @@ export default {
   data() {
     return {
       message: '',
+      model: '',
     }
   },
   methods: {
     disable(bool) {
       if (typeof bool === 'boolean') {
-        this.input.disabled = bool
-        this.input.model = ''
+        this.model = ''
       }
     },
     validate(e) {
-      const value = this.input.model
+      const value = this.model
       const { rules } = this.input
       const { input } = this.$refs
       if (!rules || rules.length === 0) return
@@ -106,7 +106,7 @@ export default {
     height: 2rem;
     border-radius: 0.25rem;
     overflow: hidden;
-    background: #f2f2f2;
+    background: $background-color;
     display: flex;
     flex-direction: row-reverse;
     justify-content: flex-start;
@@ -121,6 +121,7 @@ export default {
       .icon {
         position: relative;
         font-size: 1rem;
+        color: $subtext-color;
       }
       .border {
         position: absolute;
