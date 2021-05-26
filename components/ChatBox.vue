@@ -6,30 +6,26 @@
     </div>
     <div class="chat-container">
       <div class="msg-container">
-        <div class="msg sent">
+        <div
+          v-for="(msg, i) in messages"
+          :key="i"
+          :class="msg.type"
+          class="msg"
+        >
           <div class="text-container">
-            <p class="text">hello juga</p>
-          </div>
-        </div>
-        <div class="msg received">
-          <div class="text-container">
-            <p class="text">hello</p>
-          </div>
-        </div>
-        <div class="msg received">
-          <div class="text-container">
-            <p class="text">
-              hello dit, ini dimas kontol anjing benasdkadjofndofjasdosjd
-              sadkjas
-              ldkjasldkjasldkjasdlkasjdlkafsdjhsfhreihbrujrijlernkjrfnkjrfkjn
-            </p>
+            <p class="text">{{ msg.value }}</p>
           </div>
         </div>
       </div>
     </div>
     <div class="bottom-bar">
       <div class="text-bar">
-        <input type="text" class="input" placeholder="write a message ..." />
+        <input
+          v-model="messageModel"
+          type="text"
+          class="input"
+          placeholder="write a message ..."
+        />
       </div>
       <div v-ripple class="send-icon">
         <v-icon v-ripple class="icon">mdi-send</v-icon>
@@ -40,11 +36,41 @@
 </template>
 
 <script>
+import io from 'socket.io-client'
+
 export default {
   props: {
     contact: {
       type: Object,
       required: true,
+    },
+  },
+
+  data() {
+    return {
+      messages: [
+        {
+          type: 'sent',
+          value: 'hai',
+        },
+        {
+          type: 'received',
+          value: 'hai juga',
+        },
+      ],
+
+      messageModel: '',
+    }
+  },
+
+  mounted() {
+    const socket = io('http://localhost:8000/messages')
+    socket.emit('join-room', 1)
+  },
+
+  methods: {
+    sendMessage() {
+      // push ke array messsgge
     },
   },
 }
