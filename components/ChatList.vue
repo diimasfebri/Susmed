@@ -27,6 +27,21 @@
   </div>
 </template>
 
+<script>
+export default {
+  data() {
+    return {
+      contactList: [
+        {
+          name: '',
+          idUser: '',
+        },
+      ],
+    }
+  },
+}
+</script>
+
 <style lang="scss" scoped>
 .chat-list-page {
   position: relative;
@@ -147,7 +162,6 @@
           display: flex;
           font-weight: bolder;
           width: 100%;
-          font-size: 1rem;
         }
         .recently {
           position: relative;
@@ -155,11 +169,11 @@
           justify-content: space-between;
           width: 100%;
           .chat-recently {
-            font-size: 0.85rem;
+            font-size: 0.6rem;
             color: $subtext-color;
           }
           .time-recently {
-            font-size: 0.85rem;
+            font-size: 0.6rem;
             padding-right: 1rem;
             color: $subtext-color;
           }

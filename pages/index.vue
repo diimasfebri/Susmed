@@ -1,6 +1,6 @@
 <template>
   <div class="home-page">
-    testteste
+    masih belum jadi
     <div class="right-section"></div>
     <div class="left-section"></div>
   </div>
