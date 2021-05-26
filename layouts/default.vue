@@ -241,6 +241,10 @@ export default {
 </style>
 
 <style lang="scss">
+//scroll-bar menghilang
+::-webkit-scrollbar {
+  display: none;
+}
 html,
 body {
   margin: 0;

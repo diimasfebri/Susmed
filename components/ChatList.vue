@@ -13,10 +13,20 @@
       </div>
     </div>
     <div class="chat-listed">
-      <div class="contact-list">
-        <div class="profile"></div>
+      <div
+        v-for="contact in contactList"
+        :key="contact.idUser"
+        v-ripple
+        :class="messageSelected === contact.idUser ? 'active' : ''"
+        class="contact-list"
+        @click="chatSelected(contact)"
+      >
+        <div
+          :style="`background-color: ${randomcolor()}`"
+          class="profile"
+        ></div>
         <div class="name-container">
-          <div class="name">Aditya Darmawanto</div>
+          <div class="name">{{ contact.name }}</div>
           <div class="recently">
             <div class="chat-recently">lagi apa?</div>
             <div class="time-recently">12m</div>
@@ -33,11 +43,70 @@ export default {
     return {
       contactList: [
         {
-          name: '',
-          idUser: '',
+          name: 'Aditya Darmawatno',
+          idUser: '1',
+        },
+        {
+          name: 'Kemal ',
+          idUser: '2',
+        },
+        {
+          name: 'Alex',
+          idUser: '3',
+        },
+        {
+          name: 'Dika',
+          idUser: '4',
+        },
+        {
+          name: 'Ryandika',
+          idUser: '5',
+        },
+        {
+          name: 'Reza',
+          idUser: '6',
+        },
+        {
+          name: 'ihsan',
+          idUser: '7',
+        },
+        {
+          name: 'Santika',
+          idUser: '8',
+        },
+        {
+          name: 'Amar',
+          idUser: '9',
+        },
+        {
+          name: 'Ardi',
+          idUser: '10',
         },
       ],
+      // kontak chat yang dipilih
+      messageSelected: '',
     }
+  },
+
+  methods: {
+    // fungsi untuk mengambil warna secara random
+    randomcolor() {
+      const colors = [
+        '#DFFF00',
+        '#FFBF00',
+        '#DE3163',
+        '9FE2BF',
+        '#40E0D0',
+        '#CCCCFF',
+      ]
+      return colors[Math.floor(Math.random() * colors.length)]
+    },
+
+    chatSelected(contact) {
+      this.messageSelected = contact.idUser
+      // emit itu kirim event
+      this.$emit('message-selected', contact)
+    },
   },
 }
 </script>
@@ -127,6 +196,8 @@ export default {
     display: flex;
     height: calc(100% - 7rem);
     width: 100%;
+    // agar bisa scroll
+    overflow-y: auto;
     justify-content: flex-start;
     flex-direction: column;
     .contact-list {
@@ -136,12 +207,17 @@ export default {
       flex-direction: row;
       justify-content: flex-start;
       align-items: center;
+      padding: 0.5rem 0;
+      box-sizing: border-box;
       width: 100%;
-      height: 15%;
+      height: 4rem;
+      flex-shrink: 0;
+      &.active {
+        background-color: rgba($primary-color, 0.1);
+      }
       .profile {
         position: relative;
         display: flex;
-        background-color: $subtext-color;
         justify-content: center;
         align-items: center;
         margin: 0 1rem;

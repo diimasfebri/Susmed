@@ -1,7 +1,8 @@
 <template>
   <div class="tubuh">
     <div class="header">
-      <h1>Chat</h1>
+      <div class="profile"></div>
+      <div class="name-profile">{{ contact.name }}</div>
     </div>
     <div class="chat-container"></div>
     <div class="bottom-bar">
@@ -14,6 +15,17 @@
   </div>
 </template>
 
+<script>
+export default {
+  props: {
+    contact: {
+      type: Object,
+      required: true,
+    },
+  },
+}
+</script>
+
 <style lang="scss" scoped>
 .tubuh {
   position: relative;
@@ -21,23 +33,37 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
-  width: calc(100% - 40rem);
+  width: calc(100% - 20rem);
   height: 100%;
   border-right: 1px solid $border-color;
   .header {
     position: relative;
     width: 100%;
+    height: 3rem;
     margin: 1rem 0;
     padding: 0 1rem;
     box-sizing: border-box;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     flex-direction: row;
-    h1 {
+    .profile {
       position: relative;
       display: flex;
-      align-items: flex-start;
+      justify-content: center;
+      align-items: center;
+      background-color: $subtext-color;
+      margin: 0 1rem;
+      border-radius: 0.5rem;
+      width: 2rem;
+      height: 2rem;
+    }
+    .name-profile {
+      position: relative;
+      display: flex;
+
+      color: $font-color;
+      font-weight: bolder;
     }
   }
   .chat-container {
@@ -48,7 +74,6 @@
     padding: 0 1rem;
     box-sizing: border-box;
     display: flex;
-    justify-content: space-between;
     align-items: center;
     flex-direction: row;
   }
