@@ -2,7 +2,7 @@
   <div class="page-container">
     <chat-list />
     <chat-box />
-    <div class="right-section"></div>
+    <chat-options />
   </div>
 </template>
 
@@ -12,6 +12,7 @@
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
+  justify-content: space-between;
   align-items: flex-start;
 }
 </style>
