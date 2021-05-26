@@ -13,6 +13,10 @@
       </div>
     </div>
     <div class="chat-listed">
+      <!-- "v-for" untuk menampilkan semua yang didalam array contactList, dengan idUser sebagai keynya.
+           ":class" untuk membedakan chat yang active dengan tidak
+           "@click" untuk menjalankan fungsi chatSelected, dimana mengirimkan parameter (contact)
+       -->
       <div
         v-for="contact in contactList"
         :key="contact.idUser"
@@ -26,6 +30,7 @@
           class="profile"
         ></div>
         <div class="name-container">
+          <!-- "contact.name" untuk mengambil data nama saja dari object conctactList  -->
           <div class="name">{{ contact.name }}</div>
           <div class="recently">
             <div class="chat-recently">lagi apa?</div>
@@ -102,6 +107,7 @@ export default {
       return colors[Math.floor(Math.random() * colors.length)]
     },
 
+    // fungsi untuk memilih kontak yang dipilih dan langsung mengirimkan event ke file index.
     chatSelected(contact) {
       this.messageSelected = contact.idUser
       // emit itu kirim event
@@ -134,6 +140,7 @@ export default {
       width: 100%;
       margin: 1rem 0;
       padding: 0 1rem;
+      //layaknya padding namun menebal ke dalam content
       box-sizing: border-box;
       display: flex;
       justify-content: space-between;
