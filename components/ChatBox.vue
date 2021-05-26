@@ -25,9 +25,10 @@
           type="text"
           class="input"
           placeholder="write a message ..."
+          @keypress.enter="sendMessage"
         />
       </div>
-      <div v-ripple class="send-icon">
+      <div v-ripple class="send-icon" @click="sendMessage">
         <v-icon v-ripple class="icon">mdi-send</v-icon>
       </div>
     </div>
@@ -58,19 +59,31 @@ export default {
           value: 'hai juga',
         },
       ],
-
+      // string untuk isi dari chat
       messageModel: '',
+      // pegawainya
+      socket: null,
     }
   },
 
   mounted() {
-    const socket = io('http://localhost:8000/messages')
-    socket.emit('join-room', 1)
+    this.socket = io('http://localhost:8000/messages')
+    this.socket.emit('join-room', 1)
+    this.socket.on('new-message', (message) => {
+      this.messages.unshift({ type: 'received', value: message })
+    })
   },
 
   methods: {
     sendMessage() {
-      // push ke array messsgge
+      if (this.messageModel) {
+        this.messages.unshift({ type: 'sent', value: this.messageModel })
+        this.socket.emit('message-sent', {
+          roomId: 1,
+          message: this.messageModel,
+        })
+        this.messageModel = ''
+      }
     },
   },
 }
@@ -149,6 +162,7 @@ export default {
           p.text {
             position: relative;
             display: flex;
+            // membuat chat menjadu
             word-break: break-all;
             padding: 0.25rem 0.35rem !important;
             font-size: 0.6rem;
