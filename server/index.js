@@ -41,7 +41,6 @@ const nsp = io.of('/messages')
 
 nsp.on('connection', (socket) => {
   let room = ''
-  console.log('test')
   socket.on('message-sent', (payload) =>{
     const { roomId, message } = payload
     socket.in(roomId).emit ('new-message', message)
