@@ -178,7 +178,7 @@ export default {
           .text-container {
             align-items: flex-end;
             .text {
-              background: $primary-color;
+              background: #4d38a2;
               color: #fff;
             }
           }
@@ -187,8 +187,8 @@ export default {
           .text-container {
             align-items: flex-start;
             .text {
-              background: $subtext-color;
-              color: $font-color;
+              background: #19182a;
+              color: $subtext-color;
             }
           }
         }
@@ -202,6 +202,7 @@ export default {
     width: 100%;
     align-items: center;
     border-radius: 0.5rem;
+    margin-bottom: 1rem;
     .text-bar {
       position: relative;
       display: flex;
@@ -209,7 +210,7 @@ export default {
       height: 2rem;
       align-items: center;
       margin: 0 0 1rem 1rem;
-      background-color: $background-color;
+      background-color: rgba($primary-color, 0.1);
       border: 2px solid $background-light-color;
       border-radius: 0.5rem;
       .text {
