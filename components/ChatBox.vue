@@ -4,7 +4,29 @@
       <div class="profile"></div>
       <div class="name-profile">{{ contact.name }}</div>
     </div>
-    <div class="chat-container"></div>
+    <div class="chat-container">
+      <div class="msg-container">
+        <div class="msg sent">
+          <div class="text-container">
+            <p class="text">hello juga</p>
+          </div>
+        </div>
+        <div class="msg received">
+          <div class="text-container">
+            <p class="text">hello</p>
+          </div>
+        </div>
+        <div class="msg received">
+          <div class="text-container">
+            <p class="text">
+              hello dit, ini dimas kontol anjing benasdkadjofndofjasdosjd
+              sadkjas
+              ldkjasldkjasldkjasdlkasjdlkafsdjhsfhreihbrujrijlernkjrfnkjrfkjn
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="bottom-bar">
       <div class="text-bar">
         <input type="text" class="input" placeholder="write a message ..." />
@@ -72,12 +94,62 @@ export default {
     position: relative;
     width: 100%;
     height: calc(100% - 4rem);
-    margin: 1rem 0;
-    padding: 0 1rem;
+    // margin: 1rem 0;
+    padding: 0.5rem;
     box-sizing: border-box;
     display: flex;
-    align-items: center;
-    flex-direction: row;
+    flex-direction: column-reverse;
+    overflow-y: auto;
+    .msg-container {
+      position: relative;
+      width: 100%;
+      display: flex;
+      flex-direction: column-reverse;
+      padding: 0.5rem;
+      // undo into this
+      .msg {
+        position: relative;
+        width: 100%;
+        margin-bottom: 0.125rem;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-end;
+        .text-container {
+          position: relative;
+          max-width: 60%;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
+          p.text {
+            position: relative;
+            display: flex;
+            padding: 0.25rem 0.35rem !important;
+            font-size: 0.6rem;
+            font-weight: 500;
+            border-radius: 0.35rem;
+          }
+        }
+        &.sent {
+          flex-direction: row-reverse;
+          .text-container {
+            align-items: flex-end;
+            .text {
+              background: $primary-color;
+              color: #fff;
+            }
+          }
+        }
+        &.received {
+          .text-container {
+            align-items: flex-start;
+            .text {
+              background: $subtext-color;
+              color: $font-color;
+            }
+          }
+        }
+      }
+    }
   }
   .bottom-bar {
     position: relative;
