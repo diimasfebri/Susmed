@@ -149,6 +149,7 @@ export default {
           p.text {
             position: relative;
             display: flex;
+            word-break: break-all;
             padding: 0.25rem 0.35rem !important;
             font-size: 0.6rem;
             font-weight: 500;
