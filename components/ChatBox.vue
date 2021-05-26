@@ -67,8 +67,10 @@ export default {
   },
 
   mounted() {
+    // socket merupakan pelayan dari server
     this.socket = io('http://localhost:8000/messages')
     this.socket.emit('join-room', 1)
+    // untuk memanggil pelayan dan ambil datanya
     this.socket.on('new-message', (message) => {
       this.messages.unshift({ type: 'received', value: message })
     })
@@ -77,6 +79,7 @@ export default {
   methods: {
     sendMessage() {
       if (this.messageModel) {
+        // meengirimkan data lewat pelayan socket, ke server
         this.messages.unshift({ type: 'sent', value: this.messageModel })
         this.socket.emit('message-sent', {
           roomId: 1,

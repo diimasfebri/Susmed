@@ -8,12 +8,16 @@
       </div>
       <!-- body menggunakan componen TextInput.vue -->
       <div class="body">
-        <text-input :input="emailInput" style="margin-bottom: 0.5rem" />
-        <text-input :input="passInput" />
+        <text-input
+          :input="username"
+          style="margin-bottom: 0.5rem"
+          @update-val="changeUsernameVal"
+        />
+        <text-input :input="password" @update-val="changePasswordVal" />
         <div class="forgot-password">
           <span> Forgot ur pass? </span>
         </div>
-        <div v-ripple class="button">Enter</div>
+        <div v-ripple class="button" @click="masukAkun">Enter</div>
         <div class="sign-up">
           don't have a sus account?
           <span>Sign up</span>
@@ -31,14 +35,14 @@ export default {
       loading: false,
       loadingData: true,
       errorMesage: '',
-      emailInput: {
+      username: {
         label: 'Email',
         type: 'text',
         icon: 'mdi-email',
         placeholder: 'sus@sus.com',
         model: '',
       },
-      passInput: {
+      password: {
         label: 'Password',
         type: 'password',
         icon: 'mdi-key',
@@ -46,7 +50,43 @@ export default {
         model: '',
         autocomplete: 'current-password',
       },
+      pernahSubmit: false,
     }
+  },
+
+  computed: {
+    cek() {
+      if (!this.username || !this.password) return true
+      return false
+    },
+  },
+
+  methods: {
+    changeUsernameVal(val) {
+      this.username.model = val
+    },
+    changePasswordVal(val) {
+      this.password.model = val
+    },
+
+    async masukAkun() {
+      const user = {
+        username: this.username.model,
+        password: this.password.model,
+      }
+      try {
+        // memanggil store untuk login
+        const userLogged = await this.$store.dispatch('login', {
+          username: user.username,
+          password: user.password,
+        })
+        if (userLogged.message !== 'SUCCESS')
+          throw new Error(userLogged.message)
+      } catch (e) {
+        window.alert(e.message)
+        this.$root.$emit('clear-input') // untuk menghapus lagi kolom inputan
+      }
+    },
   },
 }
 </script>

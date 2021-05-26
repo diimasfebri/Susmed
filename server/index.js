@@ -1,25 +1,45 @@
 'use strict'
 const http = require('http')
 
+const cookieParser = require('cookie-parser')
+const mongoose = require('mongoose')
 const cors = require('cors')
 const express = require('express')
 const socketIO = require('socket.io')
 
 
+//inisialisasi router
+const users = require ('./routes/users')
+
 // Create the express app
 const app = express()
 
+
+//Panggil Database
+mongoose.connect('mongodb://localhost:27017/susmed', {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true
+}).connection
+
+
+//middleware
 app
   .use(cors({
     origin: ['http://localhost:3000'],
     credentials: true
   }))
-
+  .use(cookieParser())
   .use(express.json())
   .use(express.urlencoded({ extended: false }))
 
 // Routes and middleware
 // app.use(/* ... */)
+
+//panggil router  
+app
+.use('/users', users)
+
 
 // Error handlers
 app.use(function fourOhFourHandler (req, res) {
@@ -37,11 +57,12 @@ const io = socketIO(server, {
   }
 })
 
+//"nsp" adalah gedung 
 const nsp = io.of('/messages')
 
 nsp.on('connection', (socket) => {
   let room = ''
-  console.log('test')
+  // socket.on merupakan  ruangannya dari gedung. socket sendiri adalah pelayannya
   socket.on('message-sent', (payload) =>{
     const { roomId, message } = payload
     socket.in(roomId).emit ('new-message', message)
@@ -56,6 +77,8 @@ nsp.on('connection', (socket) => {
   })  
 
 })
+
+
 
 // Start server
 function start() {

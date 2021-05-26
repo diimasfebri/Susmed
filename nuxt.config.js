@@ -34,7 +34,8 @@ export default {
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: [  '@nuxtjs/style-resources'],
+  modules: [  '@nuxtjs/axios', '@nuxtjs/style-resources'],
+
 
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {

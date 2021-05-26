@@ -50,6 +50,12 @@ export default {
       model: '',
     }
   },
+  watch: {
+    model(val) {
+      this.$emit('update-val', val)
+    },
+  },
+
   methods: {
     disable(bool) {
       if (typeof bool === 'boolean') {
