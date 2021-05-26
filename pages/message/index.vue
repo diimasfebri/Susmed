@@ -17,7 +17,7 @@
 export default {
   data() {
     return {
-      // insialisasi object 
+      // insialisasi object
       messageSelected: null,
     }
   },
