@@ -44,7 +44,7 @@ nsp.on('connection', (socket) => {
   console.log('test')
   socket.on('message-sent', (payload) =>{
     const { roomId, message } = payload
-    socket.in(roomId).emit ('new-messaage', message)
+    socket.in(roomId).emit ('new-message', message)
   })
   socket.on('join-room', (roomId) => {
     room = roomId
