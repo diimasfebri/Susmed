@@ -9,7 +9,9 @@
       <div class="text-bar">
         <input type="text" class="input" placeholder="write a message ..." />
       </div>
-      <v-icon v-ripple class="icon">mdi-send</v-icon>
+      <div v-ripple class="send-icon">
+        <v-icon v-ripple class="icon">mdi-send</v-icon>
+      </div>
     </div>
     <div class="column-chat"></div>
   </div>
@@ -78,7 +80,6 @@ export default {
     flex-direction: row;
   }
   .bottom-bar {
-    cursor: pointer;
     position: relative;
     display: flex;
     height: 2rem;
@@ -86,7 +87,6 @@ export default {
     align-items: center;
     border-radius: 0.5rem;
     .text-bar {
-      cursor: pointer;
       position: relative;
       display: flex;
       width: calc(100% - 2rem);
@@ -117,13 +117,28 @@ export default {
         font-weight: 600;
       }
     }
-    .icon {
+    .send-icon {
+      cursor: pointer;
+      width: 36px;
+      height: 36px;
       display: flex;
-      position: relative;
+      justify-content: center;
+      align-items: center;
+      border-radius: 5px;
       justify-content: center;
       align-items: center;
       margin: 0 1rem 1rem 1rem;
-      color: $primary-color;
+      .icon {
+        position: relative;
+        width: 36px;
+        height: 36px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 5px;
+        pointer-events: none;
+        color: $primary-color;
+      }
     }
   }
 }
