@@ -28,7 +28,7 @@ export const actions = {
   async login({ dispatch }, { username, password }) {
     try {
       const { data } = await this.$axios.post(
-        'http://localhost:8000/users/login',
+        'http://localhost:8000/users/signin',
         {
           username,
           password,
@@ -46,7 +46,7 @@ export const actions = {
   async signup({ dispatch }, { nama, username, password }) {
     try {
       const { data } = await this.$axios.post(
-        'http://localhost:8000/users/daftar',
+        'http://localhost:8000/users/signup',
         {
           nama,
           username,

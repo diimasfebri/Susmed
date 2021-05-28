@@ -199,7 +199,7 @@ export default {
     position: relative;
     display: flex;
     height: 2rem;
-    width: 100%;
+    width: 100%;  
     align-items: center;
     border-radius: 0.5rem;
     margin-bottom: 1rem;

@@ -5,7 +5,7 @@ const user = require('../model/usermodel')
 const router = express.Router()
 
 
-router.post('/daftar', async (req,res) =>{
+router.post('/signup', async (req,res) =>{
   const {
     body: {name, username, password}
   } = req
@@ -28,7 +28,7 @@ router.post('/daftar', async (req,res) =>{
 })
 
 
-router.post('/login', async (req, res) => {
+router.post('/signin', async (req, res) => {
  const {
    body: {username, password}
  } = req

@@ -36,10 +36,10 @@ export default {
       loadingData: true,
       errorMesage: '',
       username: {
-        label: 'Email',
+        label: 'username',
         type: 'text',
-        icon: 'mdi-email',
-        placeholder: 'sus@sus.com',
+        icon: 'mdi-account-circle',
+        placeholder: 'place ur username here',
         model: '',
       },
       password: {
