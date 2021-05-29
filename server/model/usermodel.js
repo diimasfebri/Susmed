@@ -13,6 +13,7 @@ const UserSchema = Schema({
     type: String,
     required: true
   },
+  //ini buat gambar
   avatar:{
     type: String,
     required : false
