@@ -10,6 +10,7 @@ const socketIO = require('socket.io')
 
 //inisialisasi router
 const users = require ('./routes/users')
+const rooms = require ('./routes/rooms')
 
 // Create the express app
 const app = express()
@@ -39,7 +40,7 @@ app
 //panggil router  
 app
 .use('/users', users)
-
+.use('/rooms', rooms)
 
 // Error handlers
 app.use(function fourOhFourHandler (req, res) {
