@@ -3,7 +3,7 @@
     <div class="nav">
       <div class="top-section">
         <div class="profile">
-          <v-img class="img" :src="avatar" />
+          <v-img class="img" :src="setAvatar" />
         </div>
       </div>
       <div class="center-section">
@@ -76,7 +76,7 @@ export default {
       return this.navList.find((a) => a.path === this.navSelected)
     },
     setAvatar() {
-      return this.$store.getters['/avatar']
+      return this.$store.getters.avatar
     },
   },
 
@@ -126,8 +126,8 @@ export default {
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 3rem;
-        height: 3rem;
+        width: 2.5rem;
+        height: 2.5rem;
         border-radius: 50%;
         .img {
           position: relative;

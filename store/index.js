@@ -2,7 +2,7 @@
 export const state = () => {
   return {
     idUser: '',
-    avatar: './DefaultUserPic.svg',
+    avatar: '',
     name: '',
   }
 }
@@ -38,7 +38,6 @@ export const actions = {
   setIdUser({ commit }, idUser) {
     commit('SET_ID_USER', idUser)
   },
-
   setAvatar({ commit }, avatar) {
     commit('SET_AVATAR', avatar)
   },
@@ -56,10 +55,11 @@ export const actions = {
         }
       )
       if (data.message !== 'SUCCESS') throw new Error(data.message)
+      console.log(data)
       dispatch('setIdUser', data.user)
       dispatch('setAvatar', data.avatar)
       dispatch('setName', data.name)
-      return { message: 'SUCCESS', data }
+      return { message: 'SUCCESS' }
     } catch (e) {
       console.log(e)
       return { message: e.message }
@@ -82,5 +82,11 @@ export const actions = {
     } catch (e) {
       return { message: e.message }
     }
+  },
+
+  logout({ commit }) {
+    commit('SET_ID_USER', '')
+    commit('SET_AVATAR', '')
+    commit('SET_NAME', '')
   },
 }

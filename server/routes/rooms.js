@@ -1,19 +1,17 @@
 const express = require('express')
 
-const user = require('../model/usermodel')
+const user = require('../model/roommodel')
 
 const router = express.Router()
 
 
-router.post('/signup', async (req, res) => {
-  const {
-    body: { name, username, password }
-  } = req
+router.get('/find-room', async (req, res) => {
   try {
-    if (typeof username !== 'string' || username.length === 0)
-      throw new Error('INVALID_REQUEST')
-    if (password.length === 0 && typeof password !== 'string')
-      throw new Error('INVALID_REQUEST')
+  const {
+    query : { members }
+  } = req
+    const kok =     members.split(',')
+
     //INPUT DATA KE DATABASE
     const newAkun = new user({
       name, username, password, create_date: new Date()
