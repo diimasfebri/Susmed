@@ -15,12 +15,12 @@
           v-ripple
           :class="navSelected === nav.path ? 'active' : ''"
           class="button"
-          @click="navSelected = nav.path"
+          @click="changePage(nav.path)"
         >
           <v-icon class="icon">{{ nav.icon }}</v-icon>
         </div>
       </div>
-      <div class="bottom-section">
+      <div class="bottom-section" @click="masukSignIn">
         <div v-ripple class="logout">
           <v-icon class="icon">mdi-power</v-icon>
         </div>
@@ -74,6 +74,17 @@ export default {
     pageTitle() {
       //  mencari yang navSelected atau yang Aktif
       return this.navList.find((a) => a.path === this.navSelected)
+    },
+  },
+
+  methods: {
+    changePage(navSelected) {
+      this.navSelected = navSelected
+      const pages = navSelected
+      this.$router.push(pages)
+    },
+    masukSignIn() {
+      this.$router.push('/login')
     },
   },
 }

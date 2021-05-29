@@ -2,6 +2,8 @@
 export const state = () => {
   return {
     idUser: '',
+    avatar: '',
+    name: '',
   }
 }
 
