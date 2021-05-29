@@ -1,5 +1,5 @@
 <template>
-  <form class="login-container">
+  <form class="login-container" @keypress.enter="masukAkun">
     <div class="main-card">
       <div class="error-container"></div>
       <div class="header">
@@ -15,12 +15,12 @@
         />
         <text-input :input="password" @update-val="changePasswordVal" />
         <div class="forgot-password">
-          <span> Forgot ur pass? </span>
+          <!-- <span> Forgot ur pass? </span> -->
         </div>
         <div v-ripple class="button" @click="masukAkun">Enter</div>
         <div class="sign-up">
           don't have a sus account?
-          <span>Sign up</span>
+          <span @click="buatAkun">Sign up</span>
         </div>
       </div>
     </div>
@@ -68,7 +68,9 @@ export default {
     changePasswordVal(val) {
       this.password.model = val
     },
-
+    buatAkun() {
+      this.$router.push('/signup')
+    },
     async masukAkun() {
       const user = {
         username: this.username.model,
@@ -82,9 +84,9 @@ export default {
         })
         if (userLogged.message !== 'SUCCESS')
           throw new Error(userLogged.message)
+        this.$router.push('/')
       } catch (e) {
         window.alert(e.message)
-        this.$root.$emit('clear-input') // untuk menghapus lagi kolom inputan
       }
     },
   },

@@ -1,5 +1,5 @@
 <template>
-  <form class="login-container">
+  <form class="login-container" @keypress.enter="tambahAkun">
     <div class="main-card">
       <div class="error-container"></div>
       <div class="header">
@@ -8,13 +8,25 @@
       </div>
       <!-- body menggunakan componen TextInput.vue -->
       <div class="body">
-        <text-input :input="namaInput" style="margin-bottom: 0.5rem" />
-        <text-input :input="emailInput" style="margin-bottom: 0.5rem" />
-        <text-input :input="passInput" style="margin-bottom: 1.5rem" />
-        <div v-ripple class="button">Enter</div>
+        <text-input
+          :input="name"
+          style="margin-bottom: 0.5rem"
+          @update-val="changeNameVal"
+        />
+        <text-input
+          :input="username"
+          style="margin-bottom: 0.5rem"
+          @update-val="changeUsernameVal"
+        />
+        <text-input
+          :input="password"
+          style="margin-bottom: 1.5rem"
+          @update-val="changePasswordVal"
+        />
+        <div v-ripple class="button" @click="tambahAkun">Enter</div>
         <div class="sign-up">
           Already sussy?
-          <span>Sign in</span>
+          <span @click="signIn">Sign in</span>
         </div>
       </div>
     </div>
@@ -29,21 +41,21 @@ export default {
       loading: false,
       loadingData: true,
       errorMesage: '',
-      namaInput: {
+      name: {
         label: 'Nama',
         type: 'text',
         icon: 'mdi-account',
         placeholder: 'ur sussy name goes here',
         model: '',
       },
-      emailInput: {
+      username: {
         label: 'Email',
         type: 'text',
         icon: 'mdi-email',
         placeholder: 'sus@sus.com',
         model: '',
       },
-      passInput: {
+      password: {
         label: 'Password',
         type: 'password',
         icon: 'mdi-key',
@@ -52,6 +64,39 @@ export default {
         autocomplete: 'current-password',
       },
     }
+  },
+  methods: {
+    changeNameVal(val) {
+      this.name.model = val
+    },
+    changeUsernameVal(val) {
+      this.username.model = val
+    },
+    changePasswordVal(val) {
+      this.password.model = val
+    },
+    signIn() {
+      this.$router.push('/login')
+    },
+    async tambahAkun() {
+      const user = {
+        name: this.name.model,
+        username: this.username.model,
+        password: this.password.model,
+      }
+      try {
+        const userSignUp = await this.$store.dispatch('signup', {
+          name: user.name,
+          username: user.username,
+          password: user.password,
+        })
+        if (userSignUp.message !== 'SUCCESS')
+          throw new Error(userSignUp.message)
+        this.$router.push('/login')
+      } catch (e) {
+        window.alert(e.message)
+      }
+    },
   },
 }
 </script>
