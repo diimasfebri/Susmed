@@ -2,7 +2,7 @@
 export const state = () => {
   return {
     idUser: '',
-    avatar: '',
+    avatar: './DefaultUserPic.svg',
     name: '',
   }
 }
@@ -12,12 +12,24 @@ export const getters = {
   idUser(state) {
     return state.idUser
   },
+  avatar(state) {
+    return state.avatar
+  },
+  name(state) {
+    return state.name
+  },
 }
 
-// modifikasi data
+// modifikasi atau merubah data
 export const mutations = {
   SET_ID_USER(state, newidUser) {
     state.idUser = newidUser
+  },
+  SET_AVATAR(state, avatar) {
+    state.avatar = avatar
+  },
+  SET_NAME(state, name) {
+    state.name = name
   },
 }
 
@@ -25,6 +37,13 @@ export const mutations = {
 export const actions = {
   setIdUser({ commit }, idUser) {
     commit('SET_ID_USER', idUser)
+  },
+
+  setAvatar({ commit }, avatar) {
+    commit('SET_AVATAR', avatar)
+  },
+  setName({ commit }, name) {
+    commit('SET_NAME', name)
   },
 
   async login({ dispatch }, { username, password }) {
@@ -38,7 +57,9 @@ export const actions = {
       )
       if (data.message !== 'SUCCESS') throw new Error(data.message)
       dispatch('setIdUser', data.user)
-      return { message: 'SUCCESS' }
+      dispatch('setAvatar', data.avatar)
+      dispatch('setName', data.name)
+      return { message: 'SUCCESS', data }
     } catch (e) {
       console.log(e)
       return { message: e.message }

@@ -3,7 +3,7 @@
     <div class="nav">
       <div class="top-section">
         <div class="profile">
-          <div class="profile-pic"></div>
+          <v-img class="img" :src="avatar" />
         </div>
       </div>
       <div class="center-section">
@@ -75,6 +75,9 @@ export default {
       //  mencari yang navSelected atau yang Aktif
       return this.navList.find((a) => a.path === this.navSelected)
     },
+    setAvatar() {
+      return this.$store.getters['/avatar']
+    },
   },
 
   methods: {
@@ -125,11 +128,12 @@ export default {
         align-items: center;
         width: 3rem;
         height: 3rem;
-        background-color: $subtext-color;
         border-radius: 50%;
-        .profile-pic {
+        .img {
           position: relative;
-          display: flex;
+          width: 100%;
+          height: 100%;
+          border-radius: 50%;
         }
       }
     }
