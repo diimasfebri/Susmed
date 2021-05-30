@@ -18,9 +18,7 @@
 </template>
 
 <script>
-import NewChatOverlay from '../../components/NewChatOverlay.vue'
 export default {
-  components: { NewChatOverlay },
   middleware: 'auth',
   data() {
     return {
