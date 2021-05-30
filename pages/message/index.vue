@@ -3,7 +3,7 @@
     <!-- "@message-selected" untuk menerima event dari chatList
          "Chatselected" jika ada kiriman, maka akan menjalankan fungsi chatSelected
      -->
-    <chat-list @message-selected="chatSelected" />
+    <chat-list @message-selected="chatSelected"  />
     <!-- "v-if" akan terbuka jika messageSelected ada
          ":contact" script untuk mengikat data object yang akan di bawa ke chat-box
          "messageSelected" data yang akan dibawak :contact
