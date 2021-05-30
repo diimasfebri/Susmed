@@ -3,23 +3,30 @@
     <!-- "@message-selected" untuk menerima event dari chatList
          "Chatselected" jika ada kiriman, maka akan menjalankan fungsi chatSelected
      -->
-    <chat-list @message-selected="chatSelected"  />
+    <chat-list
+      @message-selected="chatSelected"
+      @buka-popup="bukaPopup = true"
+    />
     <!-- "v-if" akan terbuka jika messageSelected ada
          ":contact" script untuk mengikat data object yang akan di bawa ke chat-box
          "messageSelected" data yang akan dibawak :contact
     -->
     <chat-box v-if="messageSelected" :contact="messageSelected" />
     <div v-else class="placeholder">Select your partner to begin.</div>
+    <new-chat-overlay v-if="bukaPopup" @tutup-popup="bukaPopup = false" />
   </div>
 </template>
 
 <script>
+import NewChatOverlay from '../../components/NewChatOverlay.vue'
 export default {
+  components: { NewChatOverlay },
   middleware: 'auth',
   data() {
     return {
       // insialisasi object
       messageSelected: null,
+      bukaPopup: false,
     }
   },
 

@@ -3,7 +3,7 @@
     <div class="header">
       <div class="chat-container">
         <h1>Chat</h1>
-        <div v-ripple class="circ-btn" @click="bukaPopup = true">
+        <div v-ripple class="circ-btn" @click="bukaPopup()">
           <v-icon class="icon">mdi-plus</v-icon>
         </div>
       </div>
@@ -39,17 +39,13 @@
         </div>
       </div>
     </div>
-    <new-chat-overlay v-if="bukaPopup" @tutup-popup="bukaPopup = false" />
   </div>
 </template>
 
 <script>
-import NewChatOverlay from './NewChatOverlay.vue'
 export default {
-  components: { NewChatOverlay },
   data() {
     return {
-      bukaPopup: false,
       contactList: [
         {
           name: 'Aditya Darmawatno',
@@ -109,6 +105,10 @@ export default {
         '#CCCCFF',
       ]
       return colors[Math.floor(Math.random() * colors.length)]
+    },
+
+    bukaPopup() {
+      this.$emit('buka-popup')
     },
 
     // fungsi untuk memilih kontak yang dipilih dan langsung mengirimkan event ke file index.

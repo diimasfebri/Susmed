@@ -1,8 +1,6 @@
 <template>
-  <div class="popup">
-    <div class="newChat">
-      <span @click="keluar">test</span>
-    </div>
+  <div class="popup" @click="keluar">
+    <div class="newChat"></div>
   </div>
 </template>
 
@@ -38,7 +36,7 @@ export default {
     border-radius: 0.5rem;
     width: 25%;
     height: 25%;
-    background: white;
+    background: $background-light-color;
     overflow: hidden;
     .span {
       color: black;
