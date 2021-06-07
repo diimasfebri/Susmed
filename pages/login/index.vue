@@ -131,6 +131,7 @@ export default {
       text-input {
         position: relative;
         display: flex;
+        padding-left: 0.25rem;
         flex-direction: column;
         justify-content: center;
         align-items: center;

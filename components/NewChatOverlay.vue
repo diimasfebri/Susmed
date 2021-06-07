@@ -8,7 +8,7 @@
           <p class="message subtext-dark">Silahkan masukkan username</p>
         </div>
         <div class="button-close" @click="keluar">
-          <v-icon class="icon">mdi-close </v-icon>
+          <v-icon v-ripple class="icon">mdi-close</v-icon>
         </div>
       </div>
       <!-- body menggunakan componen TextInput.vue -->
@@ -78,14 +78,21 @@ export default {
         justify-content: center;
         align-items: flex-start;
       }
-      .button-closer {
-        position: inherit;
+      .button-close {
+        position: relative;
         display: flex;
         align-items: center;
-        justify-content: flex-end;
+        justify-content: center;
         width: 1rem;
-        height: 1rem;
         .icon {
+          cursor: pointer;
+          position: relative;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: $subtext-color;
+          width: 1rem;
+          height: 1rem;
         }
       }
     }

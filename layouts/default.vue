@@ -39,11 +39,14 @@
       </div>
       <nuxt class="main" />
     </div>
+    <alerts-container />
   </div>
 </template>
 
 <script>
+import AlertsContainer from '../components/AlertsContainer.vue'
 export default {
+  components: { AlertsContainer },
   data() {
     return {
       // array navList isinya nicon dan nama
