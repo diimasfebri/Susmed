@@ -8,6 +8,8 @@
 import Alerts from './Alerts.vue'
 export default {
   components: { Alerts },
+
+
 }
 </script>
 
@@ -17,7 +19,6 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-
   z-index: 10000;
   right: 0;
   top: 5rem;
