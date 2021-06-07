@@ -7,13 +7,18 @@
           <h1 class="name">New Chat</h1>
           <p class="message subtext-dark">Silahkan masukkan username</p>
         </div>
+<<<<<<< HEAD
         <div class="button-close" @click="keluar">
           <v-icon v-ripple class="icon">mdi-close</v-icon>
+=======
+        <div v-ripple class="button-close" @click="keluar">
+          <v-icon class="icon">mdi-close </v-icon>
+>>>>>>> 95066b1193078655a8f4d6c2cb6c62c40ff12e33
         </div>
       </div>
       <!-- body menggunakan componen TextInput.vue -->
       <div class="body">
-        <text-input :input="username" style="margin-bottom: 0.5rem" />
+        <text-input :input="username" style="margin-bottom: 1rem" />
         <div v-ripple class="button">Enter</div>
       </div>
     </div>
@@ -28,7 +33,7 @@ export default {
         label: 'username',
         type: 'text',
         icon: 'mdi-account-circle',
-        placeholder: 'place ur username here',
+        placeholder: 'place username here',
         model: '',
       },
     }
@@ -49,7 +54,6 @@ export default {
   left: 0;
   display: flex;
   justify-content: center;
-  align-items: center;
   flex-direction: column;
   align-items: center;
   width: 100vw;
@@ -65,8 +69,11 @@ export default {
     width: 15rem;
     border-radius: 1rem;
     .header {
+      width: 100%;
       position: relative;
       display: flex;
+      justify-content: space-between;
+      align-items: center;
 
       .name-container {
         font-family: 'quicksand';
@@ -76,23 +83,38 @@ export default {
         width: 100%;
         flex-direction: column;
         justify-content: center;
-        align-items: flex-start;
+        align-items: center;
       }
       .button-close {
+<<<<<<< HEAD
+=======
+        border-radius: 0.25rem;
+        cursor: pointer;
+>>>>>>> 95066b1193078655a8f4d6c2cb6c62c40ff12e33
         position: relative;
         display: flex;
         align-items: center;
         justify-content: center;
+<<<<<<< HEAD
+=======
+        padding: 1rem;
+>>>>>>> 95066b1193078655a8f4d6c2cb6c62c40ff12e33
         width: 1rem;
         .icon {
+<<<<<<< HEAD
           cursor: pointer;
+=======
+>>>>>>> 95066b1193078655a8f4d6c2cb6c62c40ff12e33
           position: relative;
           display: flex;
           justify-content: center;
           align-items: center;
           color: $subtext-color;
+<<<<<<< HEAD
           width: 1rem;
           height: 1rem;
+=======
+>>>>>>> 95066b1193078655a8f4d6c2cb6c62c40ff12e33
         }
       }
     }

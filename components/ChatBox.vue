@@ -49,16 +49,7 @@ export default {
 
   data() {
     return {
-      messages: [
-        {
-          type: 'sent',
-          value: 'hai',
-        },
-        {
-          type: 'received',
-          value: 'hai juga',
-        },
-      ],
+      messages: [],
       // string untuk isi dari chat
       messageModel: '',
       // pegawainya
@@ -199,7 +190,7 @@ export default {
     position: relative;
     display: flex;
     height: 2rem;
-    width: 100%;  
+    width: 100%;
     align-items: center;
     border-radius: 0.5rem;
     margin-bottom: 1rem;
