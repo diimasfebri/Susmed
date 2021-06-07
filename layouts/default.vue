@@ -39,7 +39,7 @@
       </div>
       <nuxt class="main" />
     </div>
-    <alerts-container />
+    <alerts-container v-if="bukaAlert" @keluar-popup="bukaAlert = false" />
   </div>
 </template>
 
@@ -69,6 +69,7 @@ export default {
       ],
       // navSelected
       navSelected: '/',
+      bukaAlert: true,
     }
   },
 

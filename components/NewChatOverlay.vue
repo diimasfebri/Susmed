@@ -7,13 +7,8 @@
           <h1 class="name">New Chat</h1>
           <p class="message subtext-dark">Silahkan masukkan username</p>
         </div>
-<<<<<<< HEAD
         <div class="button-close" @click="keluar">
           <v-icon v-ripple class="icon">mdi-close</v-icon>
-=======
-        <div v-ripple class="button-close" @click="keluar">
-          <v-icon class="icon">mdi-close </v-icon>
->>>>>>> 95066b1193078655a8f4d6c2cb6c62c40ff12e33
         </div>
       </div>
       <!-- body menggunakan componen TextInput.vue -->
@@ -80,41 +75,26 @@ export default {
         padding: 1rem;
         position: relative;
         display: flex;
-        width: 100%;
+        width: 70%;
         flex-direction: column;
         justify-content: center;
-        align-items: center;
+        align-items: flex-start;
       }
       .button-close {
-<<<<<<< HEAD
-=======
-        border-radius: 0.25rem;
-        cursor: pointer;
->>>>>>> 95066b1193078655a8f4d6c2cb6c62c40ff12e33
         position: relative;
         display: flex;
         align-items: center;
         justify-content: center;
-<<<<<<< HEAD
-=======
-        padding: 1rem;
->>>>>>> 95066b1193078655a8f4d6c2cb6c62c40ff12e33
-        width: 1rem;
+        width: 30%;
         .icon {
-<<<<<<< HEAD
           cursor: pointer;
-=======
->>>>>>> 95066b1193078655a8f4d6c2cb6c62c40ff12e33
           position: relative;
           display: flex;
           justify-content: center;
           align-items: center;
           color: $subtext-color;
-<<<<<<< HEAD
           width: 1rem;
           height: 1rem;
-=======
->>>>>>> 95066b1193078655a8f4d6c2cb6c62c40ff12e33
         }
       }
     }

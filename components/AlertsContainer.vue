@@ -1,6 +1,6 @@
 <template>
   <div class="alerts-container">
-    <alerts />
+    <alerts @tutup-alert="keluarPopup" />
   </div>
 </template>
 
@@ -9,7 +9,11 @@ import Alerts from './Alerts.vue'
 export default {
   components: { Alerts },
 
-
+  methods: {
+    keluarPopup() {
+      this.$emit('keluar-popup')
+    },
+  },
 }
 </script>
 
