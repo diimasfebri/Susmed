@@ -48,7 +48,7 @@ export default {
     return {
       contactList: [
         {
-          name: 'Aditya Darmawatno',
+          name: 'Aditya D',
           idUser: '1',
         },
         {
